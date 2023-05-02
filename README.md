@@ -1,0 +1,2 @@
+# SimpleLogViewer
+Simple Log Viewer
