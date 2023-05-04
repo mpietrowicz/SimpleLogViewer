@@ -1,0 +1,90 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SimpleLogViewer.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="640" Width="1024" Height="640" 
+        x:Class="SimpleLogViewer.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        xmlns:material="using:Material.Icons.Avalonia" 
+        xmlns:simpleLogViewer="clr-namespace:SimpleLogViewer"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="SimpleLogViewer">
+
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+  <Window.Styles>
+    <Style Selector="Button">
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Margin" Value="4"/>
+      <Setter Property="MinWidth" Value="30"/>
+      <Setter Property="Height" Value="30"/>
+    </Style>
+      <Style Selector="TextBox">
+          <Setter Property="BorderThickness" Value="0"/>
+          <Setter Property="Padding" Value="0"/>
+          <Setter Property="Margin" Value="4"/>
+          <Setter Property="MinWidth" Value="30"/>
+          <Setter Property="Height" Value="30"/>
+          <Setter Property="FontSize" Value="12"></Setter>
+      </Style>
+  </Window.Styles>
+
+  <DockPanel>
+    <Grid Height="40" DockPanel.Dock="Top">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="300" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Button Grid.Row="0" Grid.Column="0">
+        <material:MaterialIcon Kind="Refresh"></material:MaterialIcon>
+      </Button>
+      <TextBox Grid.Row="0" Grid.Column="1" Height="30" Watermark="Search"></TextBox>
+    </Grid>
+    <TreeView MinWidth="200">
+        <TreeViewItem Header="127.0.0.1 [UDP:666] Log4j" IsExpanded="True"  DockPanel.Dock="Left">
+            <TreeViewItem Header="SimpleLogViewer">
+
+            </TreeViewItem>
+        </TreeViewItem>
+    </TreeView>
+    <ScrollViewer Name="ScrollViewerLog" DockPanel.Dock="Top" Background="DarkGray">
+      <ItemsRepeater Items="{Binding AllMessages}">
+        <ItemsRepeater.Layout>
+          <StackLayout Spacing="5"
+                       Orientation="Vertical" />
+        </ItemsRepeater.Layout>
+        <ItemsRepeater.ItemTemplate>
+          <DataTemplate x:DataType="simpleLogViewer:Event">
+            <Border Background="{Binding BackgroundBrush}" BorderBrush="Black" BorderThickness="1" Margin="0">
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="{Binding ForegroundBrush}" TextTrimming="CharacterEllipsis" Margin="0,0,5,0" TextWrapping="Wrap"
+                           Text="{Binding Timestamp, StringFormat='{} [{0:dd/MM/yyyy HH:mm:ss}]'}"
+                           ToolTip.Tip="{Binding Timestamp}"></TextBlock>
+                <TextBlock Foreground="{Binding ForegroundBrush}" TextTrimming="CharacterEllipsis" Margin="0,0,5,0" TextWrapping="Wrap"
+                           Text="{Binding Logger, StringFormat='{}[{0}]'}"
+                           ToolTip.Tip="{Binding Logger}"></TextBlock>
+                <TextBlock Foreground="{Binding ForegroundBrush}" TextTrimming="CharacterEllipsis" Margin="0,0,5,0" TextWrapping="Wrap"
+                           Text="{Binding Level, StringFormat='{}[{0}]'}"
+                           ToolTip.Tip="{Binding Level}"></TextBlock>
+                <TextBlock Foreground="{Binding ForegroundBrush}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap"
+                           Text="{Binding Message}"
+                           ToolTip.Tip="{Binding Message}"></TextBlock>
+                <TextBlock IsVisible="{Binding IsNotSame}" Foreground="{Binding ForegroundBrush}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap"
+                           Text="{Binding Message}"
+                           ToolTip.Tip="{Binding Text}"></TextBlock>
+              </StackPanel>
+
+            </Border>
+          </DataTemplate>
+        </ItemsRepeater.ItemTemplate>
+      </ItemsRepeater>
+    </ScrollViewer>
+  </DockPanel>
+
+</Window>
