@@ -8,7 +8,7 @@
         x:DataType="vm:MainWindowViewModel"
         xmlns:material="using:Material.Icons.Avalonia" 
         xmlns:simpleLogViewer="clr-namespace:SimpleLogViewer"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/OIG.ico"
         Title="SimpleLogViewer">
 
   <Design.DataContext>

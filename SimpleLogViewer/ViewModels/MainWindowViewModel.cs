@@ -15,11 +15,7 @@ using static Avalonia.Threading.Dispatcher;
 
 namespace SimpleLogViewer.ViewModels
 {
-    public struct UdpState
-    {
-        public UdpClient Client;
-        public IPEndPoint? IP;
-    }
+   
 
     [DataContract]
     public partial class MainWindowViewModel : ViewModelBase
@@ -28,7 +24,8 @@ namespace SimpleLogViewer.ViewModels
         private ObservableCollection<Event> _allMessages;
 
         [DataMember]
-        public int listenPort { get; set; } = 7071;
+        [ObservableProperty]
+        public int _listenPort = 7072;
 
 
 
@@ -37,14 +34,13 @@ namespace SimpleLogViewer.ViewModels
         {
             this._allMessages = new ObservableCollection<Event>();
             //Startup();
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, listenPort);
-            var udpClient = new UdpClient(ipEndPoint);
+       
+            var udpClient = new UdpClient("127.0.0.1",_listenPort);
 
 
             var s = new UdpState()
             {
                 Client = udpClient,
-                IP = ipEndPoint
             };
             Task.Run(async () =>
             {
@@ -105,7 +101,7 @@ namespace SimpleLogViewer.ViewModels
             Task.Run(async () =>
             {
 
-                using var udpClient = new UdpClient(listenPort);
+                using var udpClient = new UdpClient(_listenPort);
 
                 while (true)
                 {

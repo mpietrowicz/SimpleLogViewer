@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogViewer", "SimpleLogViewer\SimpleLogViewer.csproj", "{F8EF7783-BDDE-4AFA-9807-C336C5B52C88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogViewer.Module.Log4j", "SimpleLogViewer.Module.Log4j\SimpleLogViewer.Module.Log4j.csproj", "{C30EB30C-545D-4973-BC1D-60ACE8F02394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogViewer.Core", "SimpleLogViewer.Core\SimpleLogViewer.Core.csproj", "{94F7B355-D990-4977-A177-347843EB4B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F8EF7783-BDDE-4AFA-9807-C336C5B52C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8EF7783-BDDE-4AFA-9807-C336C5B52C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8EF7783-BDDE-4AFA-9807-C336C5B52C88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30EB30C-545D-4973-BC1D-60ACE8F02394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30EB30C-545D-4973-BC1D-60ACE8F02394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30EB30C-545D-4973-BC1D-60ACE8F02394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30EB30C-545D-4973-BC1D-60ACE8F02394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F7B355-D990-4977-A177-347843EB4B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F7B355-D990-4977-A177-347843EB4B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F7B355-D990-4977-A177-347843EB4B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F7B355-D990-4977-A177-347843EB4B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
